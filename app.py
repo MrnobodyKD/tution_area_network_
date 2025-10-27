@@ -14,12 +14,15 @@ from PIL import Image
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
 
-# Updated database configuration for Neon PostgreSQL
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql://neondb_owner:npg_qkhLBC37TERv@ep-restless-credit-a127n0g1-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
+    'DATABASE_URL',
+    'postgresql+psycopg://neondb_owner:npg_qkhLBC37TERv@ep-restless-credit-a127n0g1-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require'
+)
 app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
     'pool_recycle': 300,
     'pool_pre_ping': True
 }
+
 
 app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
 app.config['SESSION_COOKIE_HTTPONLY'] = True
@@ -3678,4 +3681,5 @@ if __name__ == '__main__':
         session.clear()
     
     port = int(os.environ.get('PORT', 5001))          # ← ADD THIS LINE
+
     app.run(host='0.0.0.0', port=port)                # ← REPLACE THIS LINE
