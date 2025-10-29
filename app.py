@@ -318,9 +318,7 @@ BASE_TEMPLATE = """
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
-        /* You can keep your custom CSS here */
-    </style>
-</head>
+     
 
         :root {
             --primary: #007bff;
@@ -3740,4 +3738,5 @@ if __name__ == '__main__':
     
     port = int(os.environ.get('PORT', 5001))          # ← ADD THIS LINE
     app.run(host='0.0.0.0', port=port)                # ← REPLACE THIS LINE
+
 
