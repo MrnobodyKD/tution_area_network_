@@ -304,13 +304,24 @@ BASE_TEMPLATE = """
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google-site-verification" content="gXygyyT-W9A-Z8VgEcM2_S7Pjpb3zReemPU6_Gy2yMM" />
-    <title>📚 Tuition Area Network</title>
 
-    
+    <!-- 🧠 SEO Meta Tags -->
+    <meta name="description" content="Tuition Area Network connects students to share notes, blogs, and learning resources. Join now to grow with knowledge and friends.">
+    <meta name="keywords" content="tuition area network, students, education, learning, study platform, college, notes sharing, school network, student community, blogs, social learning, latur, latur maharashtra, tution area latur, tution area, fun social media, social network latur, motegaonkar, rcc latur, vaa latur, iib latur, tutions, satish pawar">
+    <meta name="author" content="Tuition Area Network Team">
+    <meta name="robots" content="index, follow">
+
+    <title>📚 Tuition Area Network | Learn, Share & Connect</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
     <style>
+        /* You can keep your custom CSS here */
+    </style>
+</head>
+
         :root {
             --primary: #007bff;
             --secondary: #6c757d;
@@ -3664,13 +3675,59 @@ def create_admin_user():
             db.session.add(admin_user)
             db.session.commit()
             print("👑 Admin user created successfully!")
-        else:
-            # Update existing admin username
-            existing_admin.username = admin_username
-            existing_admin.is_admin = True
-            db.session.commit()
-            print("👑 Admin user updated!")
+       else:
+    # Update existing admin username
+    existing_admin.username = admin_username
+    existing_admin.is_admin = True
+    db.session.commit()
+    print("👑 Admin user updated!")
 
+
+# ---------------------------
+# ✅ Robots.txt route
+# ---------------------------
+@app.route("/robots.txt")
+def robots_txt():
+    return """User-agent: *
+Allow: /
+Sitemap: https://tution-area-network-1-zc34.onrender.com/sitemap.xml
+""", 200, {"Content-Type": "text/plain"}
+
+
+# ---------------------------
+# ✅ Sitemap.xml route
+# ---------------------------
+@app.route("/sitemap.xml")
+def sitemap_xml():
+    return """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://tution-area-network-1-zc34.onrender.com/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://tution-area-network-1-zc34.onrender.com/posts</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tution-area-network-1-zc34.onrender.com/login</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://tution-area-network-1-zc34.onrender.com/register</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>
+""", 200, {"Content-Type": "application/xml"}
+
+
+# ---------------------------
+# ✅ Main Flask runner
+# ---------------------------
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
@@ -3682,6 +3739,4 @@ if __name__ == '__main__':
         session.clear()
     
     port = int(os.environ.get('PORT', 5001))          # ← ADD THIS LINE
-
     app.run(host='0.0.0.0', port=port)                # ← REPLACE THIS LINE
-
