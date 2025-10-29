@@ -3675,12 +3675,12 @@ def create_admin_user():
             db.session.add(admin_user)
             db.session.commit()
             print("👑 Admin user created successfully!")
-       else:
-    # Update existing admin username
-    existing_admin.username = admin_username
-    existing_admin.is_admin = True
-    db.session.commit()
-    print("👑 Admin user updated!")
+        else:
+            # Update existing admin username
+            existing_admin.username = admin_username
+            existing_admin.is_admin = True
+            db.session.commit()
+            print("👑 Admin user updated!")
 
 
 # ---------------------------
@@ -3740,3 +3740,4 @@ if __name__ == '__main__':
     
     port = int(os.environ.get('PORT', 5001))          # ← ADD THIS LINE
     app.run(host='0.0.0.0', port=port)                # ← REPLACE THIS LINE
+
