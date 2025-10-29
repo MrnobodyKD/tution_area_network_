@@ -303,6 +303,7 @@ BASE_TEMPLATE = """
     <meta name="theme-color" content="#007bff">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google-site-verification" content="gXygyyT-W9A-Z8VgEcM2_S7Pjpb3zReemPU6_Gy2yMM" />
     <title>📚 Tuition Area Network</title>
 
     
@@ -3683,3 +3684,4 @@ if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5001))          # ← ADD THIS LINE
 
     app.run(host='0.0.0.0', port=port)                # ← REPLACE THIS LINE
+
